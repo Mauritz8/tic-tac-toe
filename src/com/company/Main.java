@@ -26,10 +26,17 @@ public class Main {
 	    		col = bestMove[1];
 				TimeUnit.SECONDS.sleep(2);
 			} else {
-				System.out.print("row: ");
-				row = scanner.nextInt();
-				System.out.print("col: ");
-				col = scanner.nextInt();
+	    		do {
+					System.out.print("row: ");
+					row = scanner.nextInt();
+					System.out.print("col: ");
+					col = scanner.nextInt();
+
+					if (!game.getBoard().squareIsEmpty(row, col)) {
+						System.out.println("Square " + game.getBoard().getCoordinateForSquare(row, col) + " already taken!\n");
+						System.out.println("Choose a different square:\n");
+					}
+				} while (!game.getBoard().squareIsEmpty(row, col));
 			}
 
 			game.setMark(playerToMove, row, col);

@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.concurrent.TimeUnit;
-
 public class Engine {
 
     private final int MAX_DEPTH = 15;
@@ -20,7 +18,7 @@ public class Engine {
             int highestVal = Integer.MIN_VALUE;
             for (int row = 0; row < board.getWidth(); row++) {
                 for (int col = 0; col < board.getWidth(); col++) {
-                    if (board.getSquare(row, col) == ' ') {
+                    if (board.squareIsEmpty(row, col)) {
                         board.setMark(row, col, players[1].getMark());
                         highestVal = Math.max(highestVal, miniMax(game, depth - 1, false));
                         board.setMark(row, col, ' ');
@@ -32,7 +30,7 @@ public class Engine {
             int lowestVal = Integer.MAX_VALUE;
             for (int row = 0; row < board.getWidth(); row++) {
                 for (int col = 0; col < board.getWidth(); col++) {
-                    if (board.getSquare(row, col) == ' ') {
+                    if (board.squareIsEmpty(row, col)) {
                         board.setMark(row, col, players[0].getMark());
                         lowestVal = Math.min(lowestVal, miniMax(game, depth - 1, true));
                         board.setMark(row, col, ' ');
@@ -52,7 +50,7 @@ public class Engine {
 
         for (int row = 0; row < board.getWidth(); row++) {
             for (int col = 0; col < board.getWidth(); col++) {
-                if (board.getSquare(row, col) == ' ') {
+                if (board.squareIsEmpty(row, col)) {
                     board.setMark(row, col, players[1].getMark());
                     int moveValue = miniMax(game, MAX_DEPTH, false);
                     board.setMark(row, col, ' ');

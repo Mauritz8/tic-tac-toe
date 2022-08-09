@@ -24,10 +24,10 @@ public class Game {
 
     public void setMark(Player playerToMove, int row, int col) {
         if (playerToMove.getId() == players[0].getId()) {
-            board.squares[row][col] = players[0].getMark();
+            board.setMark(row, col, players[0].getMark());
             setPlayerToMove(players[1]);
         } else {
-            board.squares[row][col] = players[1].getMark();
+            board.setMark(row, col, players[1].getMark());
             setPlayerToMove(players[0]);
         }
         if (board.playerWon(playerToMove, row, col)) {

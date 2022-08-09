@@ -19,6 +19,19 @@ public class Board {
         return squares[row][col];
     }
 
+    public boolean squareIsEmpty(int row, int col) {
+        if (getSquare(row, col) == ' ') {
+            return true;
+        }
+        return false;
+    }
+
+    public String getCoordinateForSquare(int row, int col) {
+        char[] rowCoordinates = {'A', 'B', 'C'};
+        String coordinate = new StringBuilder().append(rowCoordinates[row]).append(col + 1).toString();
+        return coordinate;
+    }
+
     public void setMark(int row, int col, char mark) {
         squares[row][col] = mark;
     }
@@ -34,7 +47,7 @@ public class Board {
     public boolean isDraw() {
         for (int row = 0; row < squares.length; row++) {
             for (int col = 0; col < squares[0].length; col++) {
-                if (squares[row][col] == ' ') {
+                if (squareIsEmpty(row, col)) {
                     return false;
                 }
             }
