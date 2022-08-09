@@ -7,6 +7,22 @@ public class Board {
         reset();
     }
 
+    public char[][] getSquares() {
+        return squares;
+    }
+
+    public int getWidth() {
+        return squares.length;
+    }
+
+    public char getSquare(int row, int col) {
+        return squares[row][col];
+    }
+
+    public void setMark(int row, int col, char mark) {
+        squares[row][col] = mark;
+    }
+
     public void reset() {
         for (int row = 0; row<squares.length; row++) {
             for (int col = 0; col<squares[0].length; col++) {

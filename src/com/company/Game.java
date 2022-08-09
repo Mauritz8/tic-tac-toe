@@ -30,13 +30,16 @@ public class Game {
             board.squares[row][col] = players[1].getMark();
             setPlayerToMove(players[0]);
         }
-        if (board.isDraw()) {
-            result.setGameStatus(GameStatus.DRAW);
-            result.setMessage("It's a draw");
-        }
         if (board.playerWon(playerToMove, row, col)) {
             result.setGameStatus(GameStatus.WIN);
             result.setMessage(playerToMove.getName() + " won!");
+            return;
+        }
+
+        if (board.isDraw()) {
+            result.setGameStatus(GameStatus.DRAW);
+            result.setMessage("It's a draw");
+            return;
         }
     }
 
